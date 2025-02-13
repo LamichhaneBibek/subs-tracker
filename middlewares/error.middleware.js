@@ -2,7 +2,7 @@ const errorMiddleware = (err, req, res, next) => {
     try {
         let error = { ...err };
         error.message = err.message;
-        console.log(err);
+        console.error(err);
 
         if (err.name === 'CastError') {
             const message = `Resource not found with id of ${err.value}`;
@@ -17,7 +17,7 @@ const errorMiddleware = (err, req, res, next) => {
         }
 
         if (err.name === 'ValidationError') {
-            const message = Object.values(err.errors).map((val) => val.message);
+            const message = Object.values(err.errors).map(val => val.message);
             error = new Error(message);
             error.statusCode = 400;
         }
