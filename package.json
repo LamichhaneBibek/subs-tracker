@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "@arcjet/node": "^1.0.0-beta.2",
+    "@upstash/workflow": "^0.2.7",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
+    "dayjs": "^1.11.13",
     "debug": "~2.6.9",
     "dotenv": "^16.4.7",
     "express": "~4.16.1",
