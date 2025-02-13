@@ -25,12 +25,12 @@ export const signUp = async (req, res, next) => {
 
         const user = await User.create([{ name, email, password: hashedPassword }], { session });
 
-        const token = jwt.sign({ userId: user[0]._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
+        const token = jwt.sign({ userId: user[0]._id }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
 
         await session.commitTransaction();
         session.endSession();
 
-        res.status(201).json({ success: true, data: { user: user[0], token } });
+        res.status(201).json({ success: true, message: 'User signed up successfully' ,data: { user: user[0], token } });
     } catch (error) {
         await session.abortTransaction();
         session.endSession();
@@ -66,4 +66,3 @@ export const signIn = async (req, res, next) => {
     }   
 }
 
-export const signOut = async (req, res, next) => {}
